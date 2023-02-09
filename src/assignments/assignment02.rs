@@ -74,7 +74,13 @@ pub fn chooses(n: u64) -> Vec<u64> {
 /// For instance, `zip(vec![1, 2, 3], vec![4, 5])` equals to `vec![(1, 4), (2, 5)]`.
 /// Here, `3` is ignored because it doesn't have a partner.
 pub fn zip(lhs: Vec<u64>, rhs: Vec<u64>) -> Vec<(u64, u64)> {
-    todo!()
+    let mut liter = lhs.iter();
+    let mut riter = rhs.iter();
+    let mut zipped: Vec<(u64, u64)> = Vec::new();
+    while let (Some(&l), Some(&r)) = (liter.next(), riter.next()) {
+        zipped.push((l, r))
+    }
+    zipped
 }
 
 /// 2x2 matrix of the following configuration:
