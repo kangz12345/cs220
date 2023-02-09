@@ -181,5 +181,46 @@ pub fn fibonacci(n: u64) -> u64 {
 ///
 /// Hint: Google the song title for lyrics and look at the test code for the expected result.
 pub fn twelve_days_of_christmas_lyrics() -> String {
-    todo!()
+    const HEAD: &str = " day of Christmas, my true love sent to me";
+    const LINES: [&str; 12] = [
+        "Twelve drummers drumming",
+        "Eleven pipers piping",
+        "Ten lords a-leaping",
+        "Nine ladies dancing",
+        "Eight maids a-milking",
+        "Seven swans a-swimming",
+        "Six geese a-laying",
+        "Five gold rings (five golden rings)",
+        "Four calling birds",
+        "Three French hens",
+        "Two turtledoves",
+        "And a partridge in a pear tree",
+    ];
+    const DAYS: [&str; 12] = [
+        "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth",
+        "tenth", "eleventh", "twelfth",
+    ];
+    let mut s: String = String::new();
+    for (day, day_str) in DAYS.iter().enumerate() {
+        s.push_str("On the ");
+        s.push_str(day_str);
+        s.push_str(HEAD);
+        s.push('\n');
+        if day == 0 {
+            s.push_str("A partridge in a pear tree\n");
+        } else {
+            for (index, line) in LINES.iter().enumerate().skip(11 - day) {
+                if day == 10 && index == 1 {
+                    s.push_str("I sent eleven pipers piping")
+                } else {
+                    s.push_str(line);
+                }
+                s.push('\n');
+            }
+        }
+        s.push('\n');
+    }
+    s.push_str(LINES[11]);
+    s.push('\n');
+    s
 }
