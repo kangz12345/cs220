@@ -155,7 +155,7 @@ impl Mat2 {
 impl Vec2 {
     /// Gets the upper value of vector.
     fn get_upper(self) -> u64 {
-        todo!()
+        self.a
     }
 }
 
