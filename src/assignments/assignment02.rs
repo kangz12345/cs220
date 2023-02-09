@@ -121,7 +121,12 @@ impl Mul<Mat2> for Mat2 {
     type Output = Mat2;
 
     fn mul(self, rhs: Mat2) -> Self::Output {
-        todo!()
+        Self::Output {
+            a: self.a * rhs.a + self.b * rhs.c,
+            b: self.a * rhs.b + self.b * rhs.d,
+            c: self.c * rhs.a + self.d * rhs.c,
+            d: self.c * rhs.b + self.d * rhs.d,
+        }
     }
 }
 
