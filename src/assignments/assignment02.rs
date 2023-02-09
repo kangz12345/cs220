@@ -134,7 +134,10 @@ impl Mul<Vec2> for Mat2 {
     type Output = Vec2;
 
     fn mul(self, rhs: Vec2) -> Self::Output {
-        todo!()
+        Self::Output {
+            a: self.a * rhs.a + self.b * rhs.b,
+            b: self.c * rhs.a + self.d * rhs.b,
+        }
     }
 }
 
