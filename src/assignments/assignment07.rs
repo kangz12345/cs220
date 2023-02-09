@@ -15,7 +15,31 @@ impl<T: Eq> Iterator for FindIter<'_, T> {
     type Item = usize;
 
     fn next(&mut self) -> Option<Self::Item> {
-        todo!()
+        let init = &self.query[0];
+        for (index, item) in self.base.iter().enumerate().skip(self.curr) {
+            if item == init {
+                let mut new_query = self.query[1..].iter();
+                let mut new_base = self.base[index + 1..].iter();
+                let mut matched = true;
+                for q in new_query {
+                    if let Some(b) = new_base.next() {
+                        if *q != *b {
+                            matched = false;
+                            break;
+                        }
+                    } else {
+                        matched = false;
+                        break;
+                    }
+                }
+                if matched {
+                    self.curr = index + 1;
+                    return Some(index);
+                }
+            }
+        }
+        self.curr = self.base.len();
+        None
     }
 }
 
