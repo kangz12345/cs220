@@ -144,7 +144,11 @@ impl Mul<Vec2> for Mat2 {
 impl Mat2 {
     /// Calculates the power of matrix.
     fn power(self, power: u64) -> Mat2 {
-        todo!()
+        let mut mat: Mat2 = Mat2::new();
+        for i in 0..power {
+            mat = mat * self;
+        }
+        mat
     }
 }
 
