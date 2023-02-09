@@ -60,13 +60,13 @@ pub fn chooses(n: u64) -> Vec<u64> {
     let mut vec: Vec<u64> = Vec::new();
     if n > 0 {
         let mut prev: u64 = 0;
-        for i in chooses(n-1) {
+        for i in chooses(n - 1) {
             vec.push(prev + i);
             prev = i;
         }
     }
     vec.push(1);
-    return vec;
+    vec
 }
 
 /// Returns the "zip" of two vectors.
