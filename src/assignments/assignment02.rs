@@ -13,36 +13,60 @@ const FAHRENHEIT_SCALE: f64 = 5.0 / 9.0;
 
 /// Converts Fahrenheit to Celsius temperature degree.
 pub fn fahrenheit_to_celsius(degree: f64) -> f64 {
-    todo!()
+    (degree - FAHRENHEIT_OFFSET) * FAHRENHEIT_SCALE
 }
 
 /// Capitalizes English alphabets (leaving the other characters intact).
 pub fn capitalize(input: String) -> String {
-    todo!()
+    input.to_ascii_uppercase()
 }
 
 /// Returns the sum of the given array. (We assume the absence of integer overflow.)
 pub fn sum_array(input: &[u64]) -> u64 {
-    todo!()
+    input.iter().sum()
 }
 
 /// Given a non-negative integer, say `n`, return the smallest integer of the form `3^m` that's greater than or equal to `n`.
 ///
 /// For instance, up3(6) = 9, up3(9) = 9, up3(10) = 27. (We assume the absence of integer overflow.)
 pub fn up3(n: u64) -> u64 {
-    todo!()
+    let mut ans: u64 = 1;
+    while ans < n {
+        ans *= 3;
+    }
+    ans
 }
 
 /// Returns the greatest common divisor (GCD) of two non-negative integers. (We assume the absence of integer overflow.)
 pub fn gcd(lhs: u64, rhs: u64) -> u64 {
-    todo!()
+    let mut a: u64 = lhs;
+    let mut b: u64 = rhs;
+    loop {
+        let q: u64 = a / b;
+        let r: u64 = a % b;
+        if r != 0 {
+            a = b;
+            b = r;
+        } else {
+            break b;
+        }
+    }
 }
 
 /// Returns the array of nC0, nC1, nC2, ..., nCn, where nCk = n! / (k! * (n-k)!). (We assume the absence of integer overflow.)
 ///
 /// Consult <https://en.wikipedia.org/wiki/Pascal%27s_triangle> for computation of binomial coefficients without integer overflow.
 pub fn chooses(n: u64) -> Vec<u64> {
-    todo!()
+    let mut vec: Vec<u64> = Vec::new();
+    if n > 0 {
+        let mut prev: u64 = 0;
+        for i in chooses(n-1) {
+            vec.push(prev + i);
+            prev = i;
+        }
+    }
+    vec.push(1);
+    return vec;
 }
 
 /// Returns the "zip" of two vectors.
